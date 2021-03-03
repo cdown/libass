@@ -1522,17 +1522,26 @@ fail:
 
 int ass_track_set_feature(ASS_Track *track, ASS_Feature feature, int enable)
 {
-    switch (feature) {
-    case ASS_FEATURE_INCOMPATIBLE_EXTENSIONS:
-        //-fallthrough
+    const uint64_t supported =
 #ifdef USE_FRIBIDI_EX_API
-    case ASS_FEATURE_BIDI_BRACKETS:
-        track->parser_priv->bidi_brackets = !!enable;
+        ASS_FEATURE_BIDI_BRACKETS |
 #endif
-        return 0;
-    default:
+        0;
+    uint64_t requested = 0;
+
+    if (feature == ASS_FEATURE_INCOMPATIBLE_EXTENSIONS)
+        requested = supported;
+    else if (feature & supported) {
+        requested = feature;
+    } else
         return -1;
-    }
+
+    if (enable)
+        track->parser_priv->features |= requested;
+    else
+        track->parser_priv->features &= ~requested;
+
+    return 0;
 }
 
 /**

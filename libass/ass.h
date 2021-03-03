@@ -223,7 +223,7 @@ typedef enum {
      * purposes that do not involve actual ASS subtitles authored for
      * distribution.
      */
-    ASS_FEATURE_INCOMPATIBLE_EXTENSIONS,
+    ASS_FEATURE_INCOMPATIBLE_EXTENSIONS = 1,
 
     /**
      * Match bracket pairs in bidirectional text according to the revised
@@ -236,7 +236,7 @@ typedef enum {
      * This feature may be unavailable at runtime (ass_track_set_feature
      * may return -1) if libass was compiled against old FriBidi.
      */
-    ASS_FEATURE_BIDI_BRACKETS,
+    ASS_FEATURE_BIDI_BRACKETS = 1 << 1,
 
     // New enum values can be added here in new ABI-compatible library releases.
 } ASS_Feature;
