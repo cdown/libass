@@ -1665,7 +1665,7 @@ wrap_lines_smart(ASS_Renderer *render_priv, double max_text_width)
         } else if (len >= max_text_width
                    && (render_priv->state.wrap_style != 2)) {
             break_type = 1;
-            break_at = last_space;
+            break_at = last_space == -1 ? i - 1 : last_space;
             if (break_at >= 0)
                 ass_msg(render_priv->library, MSGL_DBG2, "line break at %d",
                         break_at);
