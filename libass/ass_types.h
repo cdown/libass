@@ -21,6 +21,7 @@
 #define LIBASS_TYPES_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 #define VALIGN_SUB 0
 #define VALIGN_CENTER 8
@@ -206,6 +207,8 @@ typedef struct ass_track {
 
     ASS_Library *library;
     ASS_ParserPriv *parser_priv;
+
+    bool always_wrap;
 
     // New fields can be added here in new ABI-compatible library releases.
 } ASS_Track;
