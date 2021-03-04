@@ -1526,7 +1526,7 @@ int ass_track_set_feature(ASS_Track *track, ASS_Feature feature, int enable)
 #ifdef USE_FRIBIDI_EX_API
         ASS_FEATURE_BIDI_BRACKETS |
 #endif
-        0;
+        ASS_FEATURE_ALWAYS_WRAP;
     uint64_t requested = 0;
 
     if (feature == ASS_FEATURE_INCOMPATIBLE_EXTENSIONS)

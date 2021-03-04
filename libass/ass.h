@@ -238,6 +238,14 @@ typedef enum {
      */
     ASS_FEATURE_BIDI_BRACKETS = 1 << 1,
 
+    /**
+     * If no explicit ("\n") or implicit (" ") wrap point is found, wrap at the
+     * last seen character when doing smart wrap.
+     *
+     * Has no effect if wrap_mode is 2.
+     */
+    ASS_FEATURE_ALWAYS_WRAP,
+
     // New enum values can be added here in new ABI-compatible library releases.
 } ASS_Feature;
 
